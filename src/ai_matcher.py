@@ -1,6 +1,7 @@
 from typing import List, Dict
 import openai
 import os
+import re
 
 class AIMatcher:
     def __init__(self):
@@ -36,7 +37,7 @@ class AIMatcher:
         Period: {candidate['Period']}
         Skills: {candidate['Skills']}
 
-        Based on the job request and candidate information provided above, calculate a match score between 0 and 1, where 1 is a perfect match and 0 is no match at all. Only respond with the numeric score, nothing else.
+        Based on the job request and candidate information provided above, calculate a match score between 0 and 1, where 1 is a perfect match and 0 is no match at all. Respond with only the numeric score, nothing else.
         """
 
         try:
@@ -49,14 +50,21 @@ class AIMatcher:
                 n=1,
                 stop=None,
                 temperature=0.5,
+                max_context_length=32768  # Added context length parameter
             )
             
             # Extract the score from the response
             score_text = response.choices[0].message.content.strip()
-            score = float(score_text)
             
-            # Ensure the score is between 0 and 1
-            return max(0, min(score, 1))
+            # Use regex to extract the first float-like string from the response
+            match = re.search(r'\d+(\.\d+)?', score_text)
+            if match:
+                score = float(match.group())
+                # Ensure the score is between 0 and 1
+                return max(0, min(score, 1))
+            else:
+                print(f"Unable to extract numeric score from LLM response: {score_text}")
+                return 0.0
         except Exception as e:
             print(f"Error calculating match score: {e}")
             return 0.0
