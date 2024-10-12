@@ -14,16 +14,6 @@ body {
     flex-direction: column;
 }
 
-h1 {
-    color: #333;
-    text-align: left;
-    padding: 10px 20px;
-    margin: 0;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    font-size: 1.5em;
-}
-
 .layout {
     display: flex;
     flex: 1;
@@ -37,13 +27,22 @@ h1 {
     display: flex;
     flex-direction: column;
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    overflow-y: auto;
 }
 
 .logo {
-    max-width: 30%;
+    max-width: 100px;
     height: auto;
-    display: block;
     margin: 0 auto 20px;
+    display: block;
+}
+
+h1.title {
+    color: #333;
+    text-align: center;
+    margin: 0 0 20px;
+    font-size: 1.5em;
+    line-height: 1.2;
 }
 
 .input-form {
