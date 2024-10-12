@@ -1,0 +1,11 @@
+Position,Seniority,Period,Name,Skills
+Software Engineer,Senior,Immediate,John Doe,Python;JavaScript;React
+Data Scientist,Mid,1 month,Jane Smith,Python;R;Machine Learning
+Product Manager,Junior,2 weeks,Mike Johnson,Agile;Scrum;User Stories
+UX Designer,Senior,Immediate,Sarah Brown,Figma;Sketch;User Research
+DevOps Engineer,Mid,1 month,Chris Lee,Docker;Kubernetes;AWS
+Frontend Developer,Junior,2 weeks,Emily Chen,HTML;CSS;JavaScript
+Backend Developer,Senior,Immediate,David Wilson,Java;Spring;MySQL
+Data Analyst,Mid,1 month,Lisa Taylor,SQL;Tableau;Excel
+QA Engineer,Junior,2 weeks,Tom Harris,Selenium;JUnit;TestNG
+Full Stack Developer,Senior,Immediate,Rachel Green,JavaScript;Node.js;React;MongoDB
