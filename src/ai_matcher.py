@@ -2,27 +2,43 @@ from typing import List, Dict
 import openai
 import os
 import re
+import numpy as np
+from sentence_transformers import SentenceTransformer
+from excel_processor import CSVProcessor
+from vector_store import VectorStore
 
 class AIMatcher:
-    def __init__(self):
+    def __init__(self, csv_file_path: str):
         # Configure OpenAI to use LM-Studio's local API
         openai.api_base = "http://localhost:1234/v1"  # Adjust this URL if LM-Studio uses a different port
         openai.api_key = "not-needed"  # LM-Studio doesn't require an API key for local use
-
-    def match_candidates(self, candidates: List[Dict], request: Dict) -> List[Dict]:
-        matched_candidates = []
         
-        for candidate in candidates:
+        self.model = SentenceTransformer('all-MiniLM-L6-v2')
+        self.csv_processor = CSVProcessor(csv_file_path)
+        self.candidates = self.csv_processor.process_csv_file()
+        self.vector_store = VectorStore(self.model.get_sentence_embedding_dimension())
+        self.vector_store.add_embeddings(self.csv_processor.get_all_embeddings())
+
+    def match_candidates(self, request: Dict, top_k: int = 10) -> List[Dict]:
+        request_embedding = self._create_request_embedding(request)
+        similar_candidates = self.vector_store.search(request_embedding, top_k * 2)  # Get more candidates initially
+        
+        matched_candidates = []
+        for candidate_name, similarity in similar_candidates:
+            candidate = next(c for c in self.candidates if c['Name'] == candidate_name)
             score = self._calculate_match_score(candidate, request)
             matched_candidates.append({
                 "candidate": candidate,
                 "score": score
             })
         
-        return sorted(matched_candidates, key=lambda x: x["score"], reverse=True)
+        return sorted(matched_candidates, key=lambda x: x["score"], reverse=True)[:top_k]
+
+    def _create_request_embedding(self, request: Dict) -> np.ndarray:
+        text = f"{request['position']} {request['seniority']} {request['period']} {request.get('skills', '')}"
+        return self.model.encode(text)
 
     def _calculate_match_score(self, candidate: Dict, request: Dict) -> float:
-        # Prepare the input for the LLM
         user_message = f"""You are an AI assistant that calculates match scores between job requests and candidates.
 
         Job Request:
@@ -37,7 +53,13 @@ class AIMatcher:
         Period: {candidate['Period']}
         Skills: {candidate['Skills']}
 
-        Based on the job request and candidate information provided above, calculate a match score between 0 and 1, where 1 is a perfect match and 0 is no match at all. Respond with only the numeric score, nothing else.
+        Based on the job request and candidate information provided above, calculate a match score between 0 and 1, where 1 is a perfect match and 0 is no match at all. Consider the following factors:
+        1. How closely the positions align (30% weight)
+        2. The match between seniority levels (20% weight)
+        3. The compatibility of the time periods (20% weight)
+        4. The overlap in required and possessed skills (30% weight)
+
+        Respond with only the numeric score, nothing else.
         """
 
         try:
@@ -49,7 +71,7 @@ class AIMatcher:
                 max_tokens=10,
                 n=1,
                 stop=None,
-                temperature=0.5,
+                temperature=0.3,
                 max_context_length=32768  # Added context length parameter
             )
             
@@ -71,11 +93,7 @@ class AIMatcher:
 
 # Example usage
 if __name__ == "__main__":
-    matcher = AIMatcher()
-    sample_candidates = [
-        {"Position": "Software Engineer", "Seniority": "Senior", "Period": "Immediate", "Name": "John Doe", "Skills": "Python;JavaScript;React"},
-        {"Position": "Data Scientist", "Seniority": "Mid", "Period": "1 month", "Name": "Jane Smith", "Skills": "Python;R;Machine Learning"}
-    ]
+    matcher = AIMatcher("../data/candidates.csv")
     request = {"position": "Software Engineer", "seniority": "Senior", "period": "Immediate", "skills": "Python;React"}
-    matches = matcher.match_candidates(sample_candidates, request)
+    matches = matcher.match_candidates(request)
     print(matches)

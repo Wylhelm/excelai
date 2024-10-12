@@ -1,15 +1,13 @@
 from flask import Flask, render_template, request, flash
-from excel_processor import CSVProcessor
 from ai_matcher import AIMatcher
 import os
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.secret_key = os.urandom(24)  # Set a secret key for flash messages
 
-# Initialize CSVProcessor and AIMatcher
+# Initialize AIMatcher
 csv_file_path = os.path.join(app.root_path, '..', 'data', 'candidates.csv')
-csv_processor = CSVProcessor(csv_file_path)
-ai_matcher = AIMatcher()
+ai_matcher = AIMatcher(csv_file_path)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -24,9 +22,8 @@ def index():
         }
 
         try:
-            # Process CSV file and match candidates
-            csv_data = csv_processor.process_csv_file()
-            matches = ai_matcher.match_candidates(csv_data, job_request)
+            # Match candidates using the RAG-based approach
+            matches = ai_matcher.match_candidates(job_request)
         except Exception as e:
             flash(f"An error occurred while matching candidates: {str(e)}", "error")
 

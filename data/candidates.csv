@@ -17,4 +17,103 @@ Business Analyst,Junior,Immediate,Ethan Wilson,SQL;Power BI;Excel
 Security Engineer,Mid,1 month,Sophia Lee,Penetration Testing;CISSP;Wireshark
 UI Designer,Junior,2 weeks,Noah Garcia,Adobe XD;Illustrator;Prototyping
 Machine Learning Engineer,Senior,Immediate,Ava Robinson,TensorFlow;PyTorch;Scikit-learn
-Network Administrator,Mid,1 month,Liam Taylor,Cisco;CCNA;Network Security
+Network Administrator,Mid,1 month,Liam Taylor,Cisco;CCNA;Network SecurityMobile Developer,Mid,1 month,Evelyn Martin,Kubernetes;Selenium;.NET;Azure;Cisco
+DevOps Engineer,Mid,2 months,Liam Wright,Wireshark;Adobe XD;JUnit;Prototyping
+Data Analyst,Junior,1 month,Sophia Wilson,Scikit-learn;HTML;Scrum;CloudFormation
+Business Analyst,Mid,2 weeks,Mia Jones,Docker;C#;Excel;R
+Software Architect,Senior,Immediate,Mason Martin,R;Swift;Kotlin;Azure
+Data Scientist,Junior,Immediate,Emma Miller,CCNA;Tableau;Excel;React
+Mobile Developer,Junior,2 weeks,Isabella Anderson,C#;User Research;Azure AI;React Native;Power BI
+Data Scientist,Junior,Immediate,Robert Garcia,Terraform;Kubernetes;Penetration Testing
+UI Designer,Mid,2 months,Isabella Thomas,Adobe XD;Docker;Network Security;Sketch
+Business Analyst,Mid,1 month,Ethan Baker,R;React;Excel
+Mobile Developer,Junior,2 months,Sarah Martinez,Power BI;JavaScript
+QA Engineer,Senior,1 week,Mike Taylor,SQL;Power BI;Wireshark;CISSP;C#
+UI Designer,Junior,2 months,Harper Robinson,CloudFormation;TestNG;CCNA;React
+Network Administrator,Mid,Immediate,Jane Adams,User Stories;Sketch;Network Security
+UI Designer,Senior,2 weeks,Robert Miller,TensorFlow;Network Security;JavaScript;Node.js
+Data Analyst,Mid,1 month,Rachel Brown,Azure AI;JUnit;CloudFormation
+Technology Analyst,Mid,Immediate,Charlotte Garcia,MongoDB;Scrum;TensorFlow
+Data Analyst,Senior,2 weeks,Rachel Thompson,Spring;Prototyping;Docker
+Business Analyst,Junior,Immediate,Rachel Taylor,CSS;MongoDB;Sketch;AWS;.NET
+Full Stack Developer,Mid,2 months,Emily Nelson,Power BI;Swift;TestNG
+Full Stack Developer,Mid,1 week,Mia Nelson,CISSP;Terraform;Swift;C#
+Backend Developer,Senior,1 month,Harper Gonzalez,Java;JUnit
+Network Administrator,Senior,1 month,Charlotte Jackson,.NET;Network Security;Penetration Testing
+Security Engineer,Mid,2 months,Lisa Sanchez,C#;Python;React Native;Figma
+Software Architect,Senior,1 week,Ava Lopez,Azure AI;Power BI;HTML;JavaScript
+Data Scientist,Junior,1 week,Liam Thomas,Selenium;Illustrator;Java;Terraform
+Technology Analyst,Mid,2 months,Noah Perez,Agile;Cisco;Figma;Scrum
+UI Designer,Mid,2 weeks,Liam Hill,R;Agile;Node.js;Python
+Software Engineer,Mid,2 weeks,Daniel Walker,SQL;Figma;Kubernetes;Adobe XD
+UX Designer,Junior,2 weeks,Emily Clark,React;Spring;User Stories;Penetration Testing
+Business Analyst,Mid,Immediate,John Ramirez,Cisco;R;Penetration Testing;CCNA
+UX Designer,Senior,1 month,Noah King,Selenium;JUnit
+Cloud Engineer,Senior,2 months,Chris Perez,Java;Docker;Sketch
+Network Administrator,Senior,1 week,Henry King,Wireshark;PyTorch;Python;MySQL
+Data Scientist,Senior,2 months,Daniel Lopez,Figma;User Stories;R;Azure AI;Machine Learning
+Technology Analyst,Senior,1 month,Lucas Walker,Azure;Scrum;User Research;R
+Cloud Engineer,Senior,2 months,Mia Walker,Tableau;AWS;JUnit;Power BI
+Cloud Engineer,Mid,Immediate,Lucas Nelson,Power BI;Scrum;Adobe XD
+Software Architect,Junior,2 weeks,Rachel Adams,Adobe XD;React;Terraform;Azure AI;SQL
+Business Analyst,Mid,1 month,Olivia Moore,Python;Azure;Cisco
+Data Analyst,Junior,1 week,Tom Gonzalez,Penetration Testing;Scrum;C#
+Software Architect,Mid,2 weeks,Lisa King,PyTorch;TensorFlow;Agile
+Data Analyst,Mid,2 weeks,Ava Garcia,.NET;Scrum;SQL;Machine Learning
+Backend Developer,Mid,2 weeks,Mason Nelson,AWS;Scikit-learn;User Research;CISSP;React Native
+Full Stack Developer,Junior,Immediate,William Williams,Adobe XD;User Stories
+Cloud Engineer,Junior,2 months,Amelia Hill,Spring;Illustrator;Kubernetes
+Software Architect,Junior,1 month,Ethan Baker,Wireshark;Power BI
+Data Scientist,Junior,Immediate,Charlotte Baker,MySQL;Excel;Penetration Testing;Agile
+Cloud Engineer,Junior,1 month,William Martin,User Research;TestNG
+Data Analyst,Mid,1 month,David Perez,Sketch;AWS
+Frontend Developer,Senior,2 months,Chris Thomas,PyTorch;Network Security
+Data Analyst,Mid,2 months,Noah Ramirez,CloudFormation;User Research;Wireshark;Kubernetes;Cisco
+Mobile Developer,Junior,1 week,Sarah Adams,Network Security;Azure;Cisco;.NET
+DevOps Engineer,Junior,1 month,Tom Clark,Terraform;Machine Learning;Wireshark;Tableau
+Full Stack Developer,Senior,Immediate,Noah Garcia,React Native;Agile;Kubernetes;Azure AI
+Network Administrator,Junior,Immediate,David Jackson,Docker;CISSP;Excel;Azure AI
+Data Analyst,Junior,1 month,Olivia Brown,Terraform;Prototyping
+Backend Developer,Junior,Immediate,Olivia Jones,JavaScript;Selenium;Figma;TensorFlow
+Network Administrator,Senior,1 month,Tom Wilson,MySQL;Terraform;Azure;Java;User Research
+Full Stack Developer,Junior,2 weeks,Mia Clark,Figma;Selenium
+DevOps Engineer,Mid,2 months,Isabella Walker,TensorFlow;TestNG;Java
+UI Designer,Junior,1 month,Sophia Jackson,Agile;AWS
+Frontend Developer,Mid,2 weeks,Ava Green,MongoDB;R;Scikit-learn
+Machine Learning Engineer,Mid,Immediate,Chris Torres,Swift;Scrum;Java;CSS
+Software Architect,Junior,Immediate,Charlotte Green,Kubernetes;C#;React Native;CCNA
+Backend Developer,Junior,1 month,Mason Allen,CISSP;React Native;AWS;MySQL;SQL
+QA Engineer,Junior,2 months,Isabella Martin,CSS;Power BI;Python;TestNG;R
+Data Analyst,Junior,2 weeks,Ava Johnson,Azure;Kotlin;Cisco
+UX Designer,Junior,2 months,John Anderson,CISSP;Spring;Scrum
+QA Engineer,Senior,2 months,William Walker,CISSP;CloudFormation;Sketch;TensorFlow;User Research
+Technology Analyst,Mid,Immediate,William Allen,Excel;MySQL
+Frontend Developer,Junior,2 weeks,Alexander Jackson,Selenium;JavaScript
+Software Architect,Senior,Immediate,Evelyn Robinson,Kotlin;Scrum
+Data Analyst,Senior,2 months,Emily Martinez,.NET;Azure;Swift
+UI Designer,Senior,2 weeks,Robert Taylor,Docker;Terraform;C#;PyTorch
+Technology Analyst,Mid,Immediate,Daniel Martinez,React Native;CloudFormation
+Network Administrator,Junior,1 month,Mason Gonzalez,Sketch;CCNA;MongoDB;Wireshark;Azure
+Technology Analyst,Junior,1 month,Mason Nguyen,Scikit-learn;PyTorch;CloudFormation;Machine Learning;CCNA
+Mobile Developer,Mid,2 weeks,Amelia Taylor,.NET;C#;Prototyping
+Network Administrator,Senior,2 weeks,Liam Davis,Prototyping;Spring
+Technology Analyst,Mid,1 week,Isabella Johnson,Docker;R;Sketch;TensorFlow;Penetration Testing
+Software Engineer,Mid,2 weeks,Mason Young,R;Scikit-learn;MongoDB;Docker
+UX Designer,Mid,1 week,Olivia Gonzalez,Prototyping;PyTorch;Scikit-learn;CCNA;Penetration Testing
+UX Designer,Mid,1 week,Jane Wright,PyTorch;Terraform;Java;JavaScript
+Software Engineer,Mid,2 weeks,Mike Thomas,Spring;Prototyping;JUnit
+Software Architect,Mid,1 week,Sophia Taylor,CloudFormation;C#;Kubernetes;MySQL;Adobe XD
+Frontend Developer,Junior,Immediate,Henry Anderson,Cisco;JUnit;Scikit-learn;Selenium;Power BI
+Machine Learning Engineer,Mid,1 month,Ava Young,Scrum;Java;Node.js;PyTorch;CSS
+Backend Developer,Mid,2 months,Rachel Robinson,CSS;MongoDB;Selenium;Azure AI
+Data Analyst,Junior,Immediate,Ava Robinson,Python;Java;CCNA
+Software Engineer,Mid,2 weeks,Michael Flores,JUnit;Machine Learning;JavaScript
+Mobile Developer,Mid,1 week,Mason Wilson,React Native;Python;SQL;Sketch
+Network Administrator,Mid,1 week,Mia Lee,SQL;React Native;Power BI;MongoDB;Scrum
+Technology Analyst,Senior,1 month,Mike Smith,Swift;Azure;AWS;Docker;Illustrator
+DevOps Engineer,Senior,1 week,Jane Hill,C#;Spring
+Machine Learning Engineer,Mid,2 months,William Anderson,Machine Learning;R;Spring
+DevOps Engineer,Junior,1 week,Emily Clark,Excel;Java;Adobe XD;R
+Technology Analyst,Junior,1 month,John Clark,MongoDB;MySQL;Cisco
+QA Engineer,Junior,2 months,Lisa Scott,Power BI;Python;Scikit-learn;Selenium;Agile
+Software Architect,Senior,1 month,Robert Hill,Excel;C#;Docker;Swift
