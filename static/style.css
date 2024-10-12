@@ -4,25 +4,61 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 h1 {
     color: #333;
-    text-align: center;
+    text-align: left;
+    padding: 10px 20px;
+    margin: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-size: 1.5em;
 }
 
-form {
+.layout {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 300px;
     background: #fff;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    max-width: 30%;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.input-form {
     margin-bottom: 20px;
-    border-radius: 5px;
+}
+
+.history-box {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
 }
 
 .form-group {
@@ -32,6 +68,7 @@ form {
 label {
     display: block;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
 input[type="text"] {
@@ -76,4 +113,40 @@ button:hover {
 
 .matches p {
     margin: 5px 0;
+}
+
+#search-history {
+    list-style-type: none;
+    padding: 0;
+}
+
+#search-history li {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.no-results {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        order: -1;
+    }
+
+    .main-content {
+        flex: none;
+        height: 50vh;
+    }
 }

@@ -9,41 +9,58 @@
 <body>
     <div class="container">
         <h1>Job Candidate Matcher</h1>
-        <form method="POST">
-            <div class="form-group">
-                <label for="position">Position:</label>
-                <input type="text" id="position" name="position" required>
+        <div class="layout">
+            <div class="sidebar">
+                <img src="{{ url_for('static', filename='images/cgi.jpeg') }}" alt="CGI Logo" class="logo">
+                <div class="input-form">
+                    <form method="POST">
+                        <div class="form-group">
+                            <label for="position">Position:</label>
+                            <input type="text" id="position" name="position" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="seniority">Seniority:</label>
+                            <input type="text" id="seniority" name="seniority" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="period">Period:</label>
+                            <input type="text" id="period" name="period" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="skills">Skills (semicolon-separated):</label>
+                            <input type="text" id="skills" name="skills" placeholder="e.g. Python;JavaScript;React">
+                        </div>
+                        <button type="submit">Find Matches</button>
+                    </form>
+                </div>
+                <div class="history-box">
+                    <h3>Search History</h3>
+                    <!-- Add history items here -->
+                    <ul id="search-history">
+                        <!-- History items will be added dynamically -->
+                    </ul>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="seniority">Seniority:</label>
-                <input type="text" id="seniority" name="seniority" required>
+            <div class="main-content">
+                {% if matches %}
+                <h2>Matched Candidates:</h2>
+                <ul class="matches">
+                    {% for match in matches %}
+                    <li>
+                        <h3>{{ match.candidate.Name }}</h3>
+                        <p>Position: {{ match.candidate.Position }}</p>
+                        <p>Seniority: {{ match.candidate.Seniority }}</p>
+                        <p>Availability: {{ match.candidate.Period }}</p>
+                        <p>Skills: {{ match.candidate.Skills }}</p>
+                        <p>Match Score: {{ (match.score * 100)|round(2) }}%</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p class="no-results">No matches found. Please enter search criteria and click "Find Matches".</p>
+                {% endif %}
             </div>
-            <div class="form-group">
-                <label for="period">Period:</label>
-                <input type="text" id="period" name="period" required>
-            </div>
-            <div class="form-group">
-                <label for="skills">Skills (semicolon-separated):</label>
-                <input type="text" id="skills" name="skills" placeholder="e.g. Python;JavaScript;React">
-            </div>
-            <button type="submit">Find Matches</button>
-        </form>
-
-        {% if matches %}
-        <h2>Matched Candidates:</h2>
-        <ul class="matches">
-            {% for match in matches %}
-            <li>
-                <h3>{{ match.candidate.Name }}</h3>
-                <p>Position: {{ match.candidate.Position }}</p>
-                <p>Seniority: {{ match.candidate.Seniority }}</p>
-                <p>Availability: {{ match.candidate.Period }}</p>
-                <p>Skills: {{ match.candidate.Skills }}</p>
-                <p>Match Score: {{ (match.score * 100)|round(2) }}%</p>
-            </li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+        </div>
     </div>
 </body>
 </html>
