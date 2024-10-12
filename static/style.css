@@ -134,6 +134,31 @@ button:hover {
     font-style: italic;
 }
 
+.analyzing-message {
+    background-color: #f0f8ff;
+    color: #0066cc;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
+
 @media (max-width: 768px) {
     .layout {
         flex-direction: column;

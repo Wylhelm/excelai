@@ -13,7 +13,7 @@
                 <img src="{{ url_for('static', filename='images/cgi.jpeg') }}" alt="CGI Logo" class="logo">
                 <h1 class="title">AI-Powered<br>Candidate Matching System</h1>
                 <div class="input-form">
-                    <form method="POST">
+                    <form method="POST" id="search-form">
                         <div class="form-group">
                             <label for="position">Position:</label>
                             <input type="text" id="position" name="position" required>
@@ -41,6 +41,7 @@
                 </div>
             </div>
             <div class="main-content">
+                <div id="analyzing-message" class="analyzing-message" style="display: none;">Analyzing...</div>
                 {% if matches %}
                 <h2>Matched Candidates:</h2>
                 <ul class="matches">
@@ -61,5 +62,17 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('search-form');
+            const analyzingMessage = document.getElementById('analyzing-message');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                analyzingMessage.style.display = 'block';
+                form.submit();
+            });
+        });
+    </script>
 </body>
 </html>
