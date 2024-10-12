@@ -1,10 +1,10 @@
-# ExcelAI - AI-Powered Candidate Matching System
+# AI-Powered Candidate Matching System
 
-ExcelAI is an advanced web application designed to streamline the process of matching job candidates with job requests using artificial intelligence. The system processes candidate information from a CSV file and uses a combination of vector similarity search and language model inference to calculate match scores based on job requirements.
+The AI-Powered Candidate Matching System is an advanced web application designed to streamline the process of matching job candidates with job requests using artificial intelligence. The system processes candidate information from a CSV file and uses a combination of vector similarity search and language model inference to calculate match scores based on job requirements.
 
 ## Application Overview
 
-The ExcelAI application consists of several key components:
+The AI-Powered Candidate Matching System application consists of several key components:
 
 1. Web Interface (Flask)
 2. CSV Processing
@@ -14,11 +14,11 @@ The ExcelAI application consists of several key components:
 
 ## RAG Implementation
 
-ExcelAI utilizes a hybrid Retrieval-Augmented Generation (RAG) approach for candidate matching. This implementation combines the efficiency of dense vector retrieval with the nuanced understanding capabilities of a language model.
+The AI-Powered Candidate Matching System utilizes a hybrid Retrieval-Augmented Generation (RAG) approach for candidate matching. This implementation combines the efficiency of dense vector retrieval with the nuanced understanding capabilities of a language model.
 
 ### Type of RAG Used
 
-The RAG system in ExcelAI can be classified as a "Hybrid Vector Search and Language Model Inference" RAG. This approach leverages two main components:
+The RAG system in the AI-Powered Candidate Matching System can be classified as a "Hybrid Vector Search and Language Model Inference" RAG. This approach leverages two main components:
 
 1. Dense Vector Retrieval: Using FAISS (Facebook AI Similarity Search) for efficient similarity search of candidate embeddings.
 2. Language Model Inference: Employing a local language model for detailed scoring and analysis.
@@ -41,7 +41,7 @@ The RAG system in ExcelAI can be classified as a "Hybrid Vector Search and Langu
    - Scalability: The vector database allows for efficient matching even with a large number of candidates.
    - On-premise processing: By using a local language model, the system ensures fast processing and data privacy.
 
-This RAG implementation enables ExcelAI to provide highly relevant candidate matches by combining the strengths of both vector-based retrieval and language model inference.
+This RAG implementation enables the AI-Powered Candidate Matching System to provide highly relevant candidate matches by combining the strengths of both vector-based retrieval and language model inference.
 
 ### Web Interface
 
