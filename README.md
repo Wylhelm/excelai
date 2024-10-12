@@ -12,6 +12,37 @@ The ExcelAI application consists of several key components:
 4. AI-Powered Matching (Hybrid Approach)
 5. Results Display
 
+## RAG Implementation
+
+ExcelAI utilizes a hybrid Retrieval-Augmented Generation (RAG) approach for candidate matching. This implementation combines the efficiency of dense vector retrieval with the nuanced understanding capabilities of a language model.
+
+### Type of RAG Used
+
+The RAG system in ExcelAI can be classified as a "Hybrid Vector Search and Language Model Inference" RAG. This approach leverages two main components:
+
+1. Dense Vector Retrieval: Using FAISS (Facebook AI Similarity Search) for efficient similarity search of candidate embeddings.
+2. Language Model Inference: Employing a local language model for detailed scoring and analysis.
+
+### How RAG is Used
+
+1. Retrieval Phase:
+   - Job requests and candidate information are converted into dense vector embeddings using SentenceTransformer ('all-MiniLM-L6-v2').
+   - These embeddings are stored in a FAISS index for efficient similarity search.
+   - When a new job request is received, its embedding is used to perform a similarity search in the FAISS index, retrieving the most similar candidate profiles.
+
+2. Generation Phase:
+   - The retrieved candidate profiles are then passed to a local language model (accessed via LM-Studio through the OpenAI API interface).
+   - The language model considers the job request details (position, seniority, period, skills) and the candidate information to produce a detailed match score between 0 and 1.
+   - This process allows for a more nuanced understanding of the relationship between job requirements and candidate qualifications.
+
+3. Hybrid Approach Benefits:
+   - Efficiency: The initial vector similarity search quickly narrows down the candidate pool.
+   - Accuracy: The language model provides a more detailed and context-aware evaluation of the matches.
+   - Scalability: The vector database allows for efficient matching even with a large number of candidates.
+   - On-premise processing: By using a local language model, the system ensures fast processing and data privacy.
+
+This RAG implementation enables ExcelAI to provide highly relevant candidate matches by combining the strengths of both vector-based retrieval and language model inference.
+
 ### Web Interface
 
 The application uses Flask to create a web interface where users can input job requirements. The main route ('/') handles both GET and POST requests, allowing users to submit job requests via a form or URL parameters.

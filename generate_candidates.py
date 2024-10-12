@@ -49,7 +49,7 @@ def generate_candidate():
     return [position, seniority, period, name, candidate_skills]
 
 # Read existing candidates
-with open('excelai/data/candidates.csv', 'r') as f:
+with open('data/candidates.csv', 'r') as f:
     reader = csv.reader(f)
     existing_candidates = list(reader)
 
@@ -57,7 +57,7 @@ with open('excelai/data/candidates.csv', 'r') as f:
 new_candidates = [generate_candidate() for _ in range(100)]
 
 # Append new candidates to the existing file
-with open('excelai/data/candidates.csv', 'a', newline='') as f:
+with open('data/candidates.csv', 'a', newline='') as f:
     writer = csv.writer(f)
     writer.writerows(new_candidates)
 
