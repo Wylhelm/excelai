@@ -1,0 +1,54 @@
+@startuml
+!define RECTANGLE class
+
+skinparam componentStyle uml2
+
+RECTANGLE "Web Interface\n(Flask)" as WebInterface
+RECTANGLE "AIMatcher" as AIMatcher
+RECTANGLE "CSVProcessor" as CSVProcessor
+RECTANGLE "VectorStore\n(FAISS)" as VectorStore
+RECTANGLE "SentenceTransformer\n(all-MiniLM-L6-v2)" as SentenceTransformer
+RECTANGLE "Local Language Model\n(LM-Studio)" as LocalLM
+
+WebInterface -down-> AIMatcher : Job Request
+AIMatcher -down-> CSVProcessor : Process Candidates
+AIMatcher -down-> VectorStore : Similarity Search
+AIMatcher -down-> SentenceTransformer : Create Embeddings
+AIMatcher -down-> LocalLM : Detailed Scoring
+CSVProcessor -right-> VectorStore : Add Embeddings
+VectorStore -up-> AIMatcher : Similar Candidates
+SentenceTransformer -up-> AIMatcher : Embeddings
+LocalLM -up-> AIMatcher : Match Scores
+AIMatcher -up-> WebInterface : Match Results
+
+note right of WebInterface
+  Handles user interactions
+  and displays results
+end note
+
+note right of AIMatcher
+  Orchestrates the
+  matching process
+end note
+
+note right of CSVProcessor
+  Reads and processes
+  candidate data from CSV file
+end note
+
+note right of VectorStore
+  Efficiently stores and
+  searches candidate embeddings
+end note
+
+note right of SentenceTransformer
+  Generates embeddings for
+  job requests and candidates
+end note
+
+note right of LocalLM
+  Performs detailed
+  scoring of candidates
+end note
+
+@enduml
