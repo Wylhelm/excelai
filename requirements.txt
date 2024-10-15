@@ -6,6 +6,6 @@ requests==2.31.0
 openai==1.12.0
 numpy==1.26.4
 pandas==2.2.1
-scikit-learn==1.4.1
+scikit-learn
 sentence-transformers==2.5.1
 faiss-cpu==1.7.4
