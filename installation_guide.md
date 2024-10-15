@@ -9,6 +9,7 @@ Before you begin, ensure you have the following installed on your system:
 1. Python 3.8 or higher
 2. pip (Python package manager)
 3. Git (optional, for cloning the repository)
+4. Conda (optional, for creating a conda environment)
 
 ## Installation Steps
 
@@ -18,12 +19,14 @@ Before you begin, ensure you have the following installed on your system:
    cd excelai
    ```
 
-2. Create a virtual environment (recommended):
+2. Choose one of the following options to create an isolated environment:
+
+   Option A: Create a virtual environment (recommended for pip users):
    ```
    python -m venv venv
    ```
 
-3. Activate the virtual environment:
+   Activate the virtual environment:
    - On Windows:
      ```
      venv\Scripts\activate
@@ -33,7 +36,17 @@ Before you begin, ensure you have the following installed on your system:
      source venv/bin/activate
      ```
 
-4. Install the required dependencies:
+   Option B: Create a conda environment (recommended for conda users):
+   ```
+   conda create --name excelai python=3.8
+   ```
+
+   Activate the conda environment:
+   ```
+   conda activate excelai
+   ```
+
+3. Install the required dependencies:
    ```
    pip install -r requirements.txt
    ```
@@ -55,7 +68,7 @@ Before you begin, ensure you have the following installed on your system:
 
 ## Running the Application
 
-1. Make sure your virtual environment is activated.
+1. Make sure your virtual environment or conda environment is activated.
 
 2. Start the Flask application:
    ```

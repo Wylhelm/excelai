@@ -1,5 +1,5 @@
 from typing import List, Dict
-import openai
+from openai import OpenAI
 import os
 import re
 import numpy as np
@@ -9,9 +9,11 @@ from vector_store import VectorStore
 
 class AIMatcher:
     def __init__(self, csv_file_path: str):
-        # Configure OpenAI to use LM-Studio's local API
-        openai.api_base = "http://localhost:1234/v1"  # Adjust this URL if LM-Studio uses a different port
-        openai.api_key = "not-needed"  # LM-Studio doesn't require an API key for local use
+        # Configure OpenAI client to use LM-Studio's local API
+        self.client = OpenAI(
+            base_url="http://localhost:1234/v1",  # Adjust this URL if LM-Studio uses a different port
+            api_key="not-needed"  # LM-Studio doesn't require an API key for local use
+        )
         
         self.model = SentenceTransformer('all-MiniLM-L6-v2')
         self.csv_processor = CSVProcessor(csv_file_path)
@@ -63,7 +65,7 @@ class AIMatcher:
         """
 
         try:
-            response = openai.ChatCompletion.create(
+            response = self.client.chat.completions.create(
                 model="local-model",  # This should match the model name in LM-Studio
                 messages=[
                     {"role": "user", "content": user_message}
@@ -71,8 +73,7 @@ class AIMatcher:
                 max_tokens=10,
                 n=1,
                 stop=None,
-                temperature=0.3,
-                max_context_length=32768  # Added context length parameter
+                temperature=0.3
             )
             
             # Extract the score from the response
