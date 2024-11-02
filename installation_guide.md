@@ -1,107 +1,87 @@
-# ExcelAI Installation Guide
+# Installation Guide for Hardware-Accelerated RAG System
 
-This guide will walk you through the process of setting up and running the ExcelAI project, a Flask-based web application that uses AI to match job candidates with job requests.
+This guide provides instructions for setting up the RAG system with hardware acceleration support for both NVIDIA CUDA and Apple Metal devices.
 
-## Prerequisites
+## System Requirements
 
-Before you begin, ensure you have the following installed on your system:
-
-1. Python 3.8 or higher
-2. pip (Python package manager)
-3. Git (optional, for cloning the repository)
-4. Conda (optional, for creating a conda environment)
+- Python 3.8 or higher
+- One of the following:
+  - NVIDIA GPU with CUDA support
+  - Apple Silicon Mac (M1/M2/M3)
+  - x86 CPU (fallback option)
 
 ## Installation Steps
 
-1. Clone the repository (if you haven't already):
-   ```
-   git clone <repository_url>
-   cd excelai
-   ```
+1. Create and activate a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Unix/macOS
+# or
+.\venv\Scripts\activate  # On Windows
+```
 
-2. Choose one of the following options to create an isolated environment:
+2. Install base requirements:
+```bash
+pip install -r requirements.txt
+```
 
-   Option A: Create a virtual environment (recommended for pip users):
-   ```
-   python -m venv venv
-   ```
+3. Install hardware-specific dependencies:
 
-   Activate the virtual environment:
-   - On Windows:
-     ```
-     venv\Scripts\activate
-     ```
-   - On macOS and Linux:
-     ```
-     source venv/bin/activate
-     ```
+### For NVIDIA CUDA Systems:
+```bash
+pip uninstall faiss-cpu
+pip install faiss-gpu
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+```
 
-   Option B: Create a conda environment (recommended for conda users):
-   ```
-   conda create --name excelai python=3.8
-   ```
+### For Apple Silicon (M1/M2/M3):
+```bash
+pip uninstall faiss-cpu
+pip install faiss-cpu  # Special build will be selected for Apple Silicon
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+```
 
-   Activate the conda environment:
-   ```
-   conda activate excelai
-   ```
+## Verification
 
-3. Install the required dependencies:
-   ```
-   pip install -r requirements.txt
-   ```
+To verify the installation and hardware acceleration:
 
-## Configuration
+1. Run the following Python code:
+```python
+import torch
+print(f"PyTorch device available: {torch.device('cuda' if torch.cuda.is_available() else 'mps' if torch.backends.mps.is_available() else 'cpu')}")
+```
 
-1. Ensure you have a CSV file with candidate data located at `excelai/data/candidates.csv`.
+2. Run the vector store test:
+```python
+python src/vector_store.py
+```
 
-2. Set up LM-Studio:
-   - Download and install LM-Studio from [https://lmstudio.ai/](https://lmstudio.ai/)
-   - Launch LM-Studio and load a compatible language model
-   - Start the local API server in LM-Studio (usually runs on http://localhost:1234)
+This will show which device is being used for acceleration and run a simple test of the vector store functionality.
 
-3. (Optional) Create a `.env` file in the project root directory to store any environment variables:
-   ```
-   OPENAI_API_BASE=http://localhost:1234/v1
-   OPENAI_API_KEY=not-needed
-   ```
+## Performance Optimization
 
-## Running the Application
+The system automatically detects and uses the best available hardware:
 
-1. Make sure your virtual environment or conda environment is activated.
-
-2. Start the Flask application:
-   ```
-   python src/app.py
-   ```
-
-3. Open a web browser and navigate to `http://localhost:5000` to access the application.
-
-## Usage
-
-1. On the main page, you'll see a form where you can enter job request details:
-   - Position
-   - Seniority
-   - Period
-   - Skills (comma-separated)
-
-2. Submit the form to see matched candidates based on your job request.
+- On NVIDIA systems, it uses CUDA for both FAISS and PyTorch operations
+- On Apple Silicon, it uses Metal for PyTorch operations and optimized CPU implementation for FAISS
+- On CPU-only systems, it uses optimized CPU implementations with multi-threading
 
 ## Troubleshooting
 
-- If you encounter any issues with dependencies, try updating them to the latest versions:
-  ```
-  pip install --upgrade -r requirements.txt
-  ```
+1. If you encounter CUDA out-of-memory errors:
+   - Reduce batch sizes in `ai_matcher.py`
+   - Adjust `nlist` and `nprobe` parameters in `vector_store.py`
 
-- Ensure that LM-Studio is running and the local API server is accessible before starting the Flask application.
+2. For Apple Silicon users:
+   - Ensure you're using Python 3.8 or higher
+   - If MPS (Metal) acceleration isn't working, verify macOS version is 12.3+
 
-- If you experience any errors related to file paths, double-check that the `candidates.csv` file is located in the correct directory (`excelai/data/`).
+3. For NVIDIA users:
+   - Ensure CUDA toolkit is installed
+   - Verify GPU compatibility with installed CUDA version
 
 ## Additional Notes
 
-- This application uses a local language model through LM-Studio for candidate matching. Make sure LM-Studio is properly set up and running before using the application.
-
-- The matching algorithm uses a combination of vector embeddings and AI-based scoring to find the best candidates for a given job request.
-
-- For any further questions or issues, please refer to the project documentation or contact the development team.
+- The system automatically batches operations for optimal performance
+- Vector similarity search is optimized using IVFFlat index for better scaling
+- The matching process combines vector similarity with LLM scoring for better results
